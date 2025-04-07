@@ -1,13 +1,63 @@
-<h2>Personajes</h2>
-<ul>
-  <li *ngFor="let character of characters">
-    {{ character.name }}
-  </li>
-</ul>
+<mat-toolbar class="header">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Deberes Backed</span>
+  <span class="example-spacer"></span>
+  <a href="https://desarrolloweb.com/articulos/controladores-nest">
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" href = "https://desarrolloweb.com/articulos/controladores-nest">
+    <mat-icon>favorite</mat-icon>
+  </button>
+</a>
+<a href="https://web.dragonball-api.com/">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</a>
+</mat-toolbar>
+<header class="Titulo">
+  <h1>Chareters</h1>
+</header>
 
-<h2>Planetas</h2>
-<ul>
-  <li *ngFor="let planet of planets">
-    {{ planet.name }}
-  </li>
-</ul>
+<div class="character-grid">
+  <mat-card *ngFor="let character of characters" class="character-card">
+    <div class="character-image-container">
+      <img [src]="character.image" [alt]="character.name" class="character-image" />
+    </div>
+
+    <mat-card-content>
+      <h2>{{ character.name }}</h2>
+      <p class="label">Species - Gender</p>
+      <p class="value">{{ character.race }} - {{ character.gender }}</p>
+      <p class="label">Base KI:</p>
+      <p class="value">{{ character.ki }}</p>
+      <p class="label">Total KI:</p>
+      <p class="value">{{ character.maxKi }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<hr>
+
+<header class="Titulo">
+  <h1>Planets</h1>
+</header>
+
+<div class="planet-grid">
+  <mat-card *ngFor="let planet of planets" class="planet-card">
+    <img mat-card-image [src]="planet.image" [alt]="planet.name" class="planet-image" />
+
+    <mat-card-content>
+      <h2>{{ planet.name }}</h2>
+      
+      <p class="status" [ngClass]="planet.isDestroyed ? 'destroyed' : 'alive'">
+        {{ planet.isDestroyed ? '🌑 Destruido' : '🪐 Activo' }}
+      </p>
+
+      <p class="planet-description">
+        {{ planet.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
